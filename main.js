@@ -1,14 +1,12 @@
-if (!isCraftingScreen()) {
-    return;
-}
+if (isCraftingScreen()) {
+    var recipes = parseRecipes();
+    var inventory = parseInventory();
+    addCraftingMenu(recipes, inventory);
+    hideKnownRecipes();
 
-var recipes = parseRecipes();
-var inventory = parseInventory();
-addCraftingMenu(recipes, inventory);
-hideKnownRecipes();
-
-if (canCurrentlyAutoCraft()) {
-    setTimeout(handleAutoCraft, 3000);
+    if (canCurrentlyAutoCraft()) {
+        setTimeout(handleAutoCraft, 3000);
+    }
 }
 
 function showRecipeList() {
